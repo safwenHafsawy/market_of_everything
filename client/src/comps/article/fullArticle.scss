@@ -298,7 +298,7 @@
 					justify-content: space-between;
 					align-items: center;
 					& > * {
-						@include btn-style($secondary-color, 50px, 50%);
+						@include btn-style(btn-color, 50px, 50%);
 						margin-bottom: 10px;
 					}
 				}
