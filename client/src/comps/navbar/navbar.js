@@ -79,7 +79,7 @@ const NavBar = () => {
 						placeholder="(Example: cars,houses...)"
 						onChange={handleSearchInput}
 					/>
-					<button id="search-btn" onClick={submitSearch}>
+					<button aria-label="search" id="search-btn" onClick={submitSearch}>
 						search
 					</button>
 				</div>

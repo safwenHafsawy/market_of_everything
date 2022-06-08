@@ -14,11 +14,13 @@ function Sell(props) {
 	const [description, setDescription] = useState("");
 	const [error, setError] = useState(false);
 	const [inputBlankError, setInputBlankError] = useState(false);
+	const [posting, setPosting] = useState(false);
 
 	//submit post
 
 	const submitPost = (e) => {
 		e.preventDefault();
+		setPosting(true);
 		const formData = new FormData();
 		formData.append("productTitle", title);
 		formData.append("productPrice", price);
@@ -50,6 +52,7 @@ function Sell(props) {
 					})
 				)
 				.catch((e) => console.log(e));
+			setPosting(false);
 		}
 	};
 
@@ -199,14 +202,23 @@ function Sell(props) {
 				</span>
 				<br />
 				<span className="sell-form-item">
-					<button id="submit-sell-btn" type="submit" onClick={submitPost}>
-						Submit
+					<button
+						id="submit-sell-btn"
+						type="submit"
+						onClick={submitPost}
+						disabled={posting}
+					>
+						{posting ? "Submiting..." : "Submit"}
 					</button>
 					<button
 						id="reset-sell-btn"
-						type="reset"
 						onClick={() => {
 							setImages([]);
+							setTitle("");
+							setPrice(0);
+							setCategory();
+							setDescription("");
+							setRegion();
 							setInputBlankError(false);
 							setError(false);
 						}}
