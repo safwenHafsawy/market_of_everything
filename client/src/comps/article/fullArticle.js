@@ -36,7 +36,7 @@ const FullArticle = () => {
 				if (data.status === 201) {
 					setError("Your Product was Deleted successfully !");
 				}
-				else console.log(data.status);
+				else setError("Ooops ! Product could not be deleted ! please try again");
 			});
 		});
 	};

@@ -71,6 +71,7 @@ const deleteProduct = async (req, res) => {
 		if (deleted)
 			return res.json({ status: 201, message: "Your product was deleted successfully !" });
 	} catch (e) {
+		console.log(e);
 		res.json({ status : 500,  message: "Your record could not be deleted ! Please try again" });
 	}
 };
