@@ -17,7 +17,7 @@ const FullArticle = () => {
 	const currentUserID = useSelector((state) => state.logInOutRed.userID);
 
 	const contactPublisher = () => {
-		fetch(`https://marketofeveythingbackend.herokuapp.com/api/userinfo?id=${item.author}`).then(
+		fetch(`/api/userinfo?id=${item.author}`).then(
 			(response) =>
 				response.json().then((data) => {
 					setEmail(data.userInfo.email);
@@ -28,7 +28,7 @@ const FullArticle = () => {
 	};
 
 	const deleteProd = () => {
-		fetch(`https://marketofeveythingbackend.herokuapp.com/api/products/${item._id}`, {
+		fetch(`/api/products/${item._id}`, {
 			method: "DELETE",
 			credentials: "include",
 		}).then((res) => {
