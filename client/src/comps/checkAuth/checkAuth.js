@@ -11,6 +11,7 @@ const CheckAuth = () => {
       credentials: "include",
     })
       .then((res) => {
+				console.log(res);
         res
           .json()
           .then((data) => {
