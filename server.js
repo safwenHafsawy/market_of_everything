@@ -33,11 +33,6 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "client", "build")));
-app.use("/images", express.static(__dirname + "/public/imgs"));
-app.get("*", (req, res) => {
-	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
 /**
  * -------------- SESSION SETUP ----------------
  */
@@ -79,6 +74,11 @@ mainAPI(app);
 productApi(app);
 userAPI(app);
 //not found route
+app.use(express.static(path.join(__dirname, "client", "build")));
+app.use("/images", express.static(__dirname + "/public/imgs"));
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 app.use((req, res) => {
 	res.json({ status: 404, message: "NOT FOUND !" });
 });

@@ -2,7 +2,6 @@
 
 module.exports = function (app) {
 	app.route("/api/home").get((req, res) => {
-		console.log(req.user);
 		if (req.user) {
 			return res.json({
 				status: 200,
