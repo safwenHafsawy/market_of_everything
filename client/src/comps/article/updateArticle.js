@@ -43,7 +43,7 @@ const UpdateProduct = () => {
 
 		if (imgError === false && inputBlankError === false) {
 			const response = await fetch(
-				`https://marketofeveythingbackend.herokuapp.com/api/products/${_id}`,
+				`/api/products/${_id}`,
 				{
 					method: "PUT",
 					credentials: "include",

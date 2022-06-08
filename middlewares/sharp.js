@@ -20,7 +20,6 @@ async function resizeImage(req, res, next) {
 				.then(() => {
 					const filePathArr = filesName.map((ele) => url + "images/" + ele);
 					res.locals = filePathArr;
-					console.log(filePathArr);
 				});
 		}
 

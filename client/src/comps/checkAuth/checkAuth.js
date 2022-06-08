@@ -11,9 +11,7 @@ const CheckAuth = () => {
 			credentials: "include",
 		});
 
-		console.log(response);
 		const data = await response.json();
-		console.log(data);
 
 		if (data.userID) dispatcher(loginAction(data.userID, data.username, true));
 	}, []);
