@@ -14,6 +14,7 @@ const CheckAuth = () => {
         res
           .json()
           .then((data) => {
+						console.log(data)
             if (data.userID) dispatcher(loginAction(data.userID,data.username, true));
           })
           .catch((e) => console.log(e));

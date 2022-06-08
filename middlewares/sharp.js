@@ -6,7 +6,7 @@ const IMAGESPATHS = path.join(__dirname, "../public/imgs/");
 async function resizeImage(req, res, next) {
 	const Buffers = [];
 	let filesName = [];
-	const url = `https://marketofeveythingbackend.herokuapp.com/`; //to be changed to `http://localhost:${PORT}/` in development
+	const url = `https://marketofeveyrthing.herokuapp.com/`; //to be changed to `http://localhost:${PORT}/` in development
 	res.locals.forEach((ele) => {
 		Buffers.push(ele[1]);
 		filesName.push(ele[0].split(" ").join("_"));
