@@ -10,11 +10,6 @@ const CheckAuth = () => {
 			headers: { "content-type": "application/json" },
 			credentials: "include",
 		});
-		const response = await fetch("/api/home", {
-			method: "GET",
-			headers: { "content-type": "application/json" },
-			credentials: "include",
-		});
 
 		console.log(response);
 		const data = await response.json();
