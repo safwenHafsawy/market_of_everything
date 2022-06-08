@@ -1,0 +1,127 @@
+@mixin container(
+	$width_p: 90%,
+	$lBorder_width_p: 20px,
+	$animation_name_p: slideformRight
+) {
+	position: absolute;
+	right: 0;
+	width: $width_p;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	background-color: $primary-color;
+	border-left: $lBorder_width_p solid $third-color;
+	animation: $animation_name_p 2s;
+	animation-fill-mode: forwards;
+}
+
+@mixin maindiv($width_p, $height_p) {
+	width: $width_p;
+	height: $height_p;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+@mixin main-header($fontsize_p, $marg_p) {
+	color: $secondary-color;
+	font-family: $main-header-font;
+	font-size: $fontsize_p;
+	width: 100%;
+	text-align: center;
+
+	&::after {
+		content: "Market";
+		color: $third-color;
+		margin: $marg_p;
+	}
+}
+
+@mixin secondary-header($fontSize_p) {
+	color: $primary-color;
+	font-family: $secondary-header-font;
+	font-size: $fontSize_p;
+}
+
+@mixin display-box($width_p, $bg-color) {
+	width: $width_p;
+	padding: 5px 10px 15px 5px;
+	margin-top: 1%;
+	box-sizing: border-box;
+	border-radius: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	background-color: $bg-color;
+	@if ($bg-color == $secondary-color) {
+		border: 2px solid $third-color;
+	} @else {
+		border: 2px solid $secondary-color;
+	}
+}
+
+@mixin links($fontSize_p, $bgcolor_p) {
+	width: fit-content;
+	padding: 5px;
+	height: 30%;
+	background-color: $secondary-color;
+	border-width: 3px;
+	border-style: solid;
+	color: $secondary-color;
+	@if ($bgcolor_p == $primary-color) {
+		border-color: $secondary-color;
+	} @else {
+		border-color: $primary-color;
+	}
+	border-radius: 5px;
+	background-color: $bgcolor_p;
+	text-align: center;
+	font-family: $regular-text-font;
+	font-size: $fontSize_p;
+
+	&:visited {
+		color: $secondary-color;
+	}
+
+	&:hover,
+	&:focus {
+		outline: none;
+		transform: scale(1.1);
+	}
+
+	&:active {
+		box-shadow: inset 1px 1px 10px 10px $shadow-color;
+	}
+}
+
+@mixin search-box($width_p, $flex-dirc_p) {
+	width: 90%;
+	height: 100%;
+	display: flex;
+	flex-direction: $flex-dirc_p;
+	align-items: center;
+	justify-content: center;
+}
+
+@mixin input_styles($width_p, $height_p, $margin_bt_p: 0px) {
+	width: $width_p;
+	height: $height_p;
+	max-height: 50px;
+	background-color: $secondary-color;
+	border: 2px solid $primary-color;
+	border-radius: 5px;
+	text-align: center;
+	margin-bottom: $margin_bt_p;
+
+	&::placeholder {
+		font-family: $placeholder-font;
+	}
+	&:focus {
+		outline: none;
+		transform: scale(1.1);
+	}
+}

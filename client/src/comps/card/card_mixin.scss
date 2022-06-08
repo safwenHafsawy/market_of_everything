@@ -1,0 +1,55 @@
+@mixin card_style {
+  background-color: $primary-color;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 3px $secondary-color;
+  border-radius: 10px;
+  transition: transform 500ms;
+  animation: fadein 1s;
+  cursor: pointer;
+}
+
+@mixin card_header_style {
+  margin: 0;
+  width: 100%;
+  color: $secondary-color;
+  font-family: $main-header-font;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin card_img_style($height_p, $width_p, $object_fit_p) {
+  height: $height_p;
+  z-index: 0;
+  margin: 10px;
+  width: $width_p;
+  object-fit: $object_fit_p;
+}
+
+@mixin card_footer_style {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: $secondary-color;
+  color: $primary-color;
+  border-radius: 10px 10px 10px 0px;
+  font: 0.8rem $regular-text-font;
+
+  & > * {
+    flex: 0 1 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}

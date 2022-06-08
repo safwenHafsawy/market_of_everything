@@ -1,0 +1,93 @@
+@import "../../_variables.scss";
+
+#profilePage {
+	width: 98%;
+	height: 100%;
+	margin: calc($navbar-height * 2) 1% 0;
+	border-top: 3px solid $secondary-color;
+	border-radius: 20px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	animation: fadein 500ms;
+
+	#username {
+		font-family: $main-header-font;
+		color: $secondary-color;
+		background-color: $third-color;
+		border-radius: 10px;
+		padding: 5px;
+	}
+
+	#userInfo {
+		display: flex;
+		flex-direction: row;
+		padding: 10px;
+
+		& > * {
+			margin: 1.5em;
+			font-family: $secondary-header-font;
+			color: $secondary-color;
+
+			& > span {
+				font-family: $main-header-font;
+				color: $secondary-color;
+			}
+		}
+
+		@media (max-width: 500px) {
+			flex-direction: column;
+
+			& > * {
+				margin: 0.8em;
+			}
+		}
+	}
+
+	#userProducts {
+		background-color: $third-color;
+		width: 30%;
+		padding: 1%;
+		border-radius: 10%;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		@media (max-width: 750px) {
+			width: 70%;
+		}
+		@media (max-width: 500px) {
+			padding: 1em;
+			width: 90%;
+		}
+		//styling the product header
+		& > h4 {
+			color: $primary-color;
+			font-family: $secondary-header-font;
+		}
+
+		//styling the product list
+		#product_list {
+			list-style: square;
+			color: $primary-color;
+
+			//styling list items
+			.user_product {
+				margin: 10px 3px;
+				& > a {
+					text-decoration-line: underline;
+					color: $primary-color;
+					font-family: $regular-text-font;
+
+					&:hover {
+						font-weight: bold;
+						color: $secondary-color;
+					}
+				}
+			}
+		}
+	}
+}

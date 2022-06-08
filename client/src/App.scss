@@ -1,0 +1,26 @@
+@import "./variables";
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $primary-color;
+}
+
+Link :focus,
+:hover,
+:visited,
+:link,
+:active {
+  text-decoration: none;
+}
+
+label {
+  font-weight: bold;
+  color: $secondary-color;
+  text-align: center;
+  width: 30%;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent; //removes the blue outline on taping (still not supported in firefox android)
+}

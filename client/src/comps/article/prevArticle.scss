@@ -1,0 +1,119 @@
+@import "../../variables";
+
+#prev-main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $blured-backgd-color;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #prev-display {
+    width: 60%;
+    max-width: 1000px;
+    height: fit-content;
+    background-color: $primary-color;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    border-radius: 20px;
+
+    #close-prev-display {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+
+      & :first-child {
+        background-color: transparent;
+        border-color: transparent;
+        cursor: pointer;
+
+        & :first-child {
+          color: $secondary-color;
+        }
+
+        &:hover,
+        &:active {
+          & :first-child {
+            transform: scale(1.1);
+            color: $third-color;
+          }
+        }
+      }
+    }
+
+    #item-header {
+      text-align: center;
+      font: 2.5rem $main-header-font;
+      color: $secondary-color;
+    }
+
+    .item-desc {
+      text-align: center;
+      color: $secondary-color;
+      & > * {
+        margin: 0px 5px;
+        font: 1rem $secondary-header-font;
+        color: $secondary-color;
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    }
+
+    .article-btns {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      & > * {
+        width: 20%;
+        margin-top: 10px;
+        background-color: $secondary-color;
+        color: $primary-color;
+        text-align: center;
+        border-radius: 5px;
+        font-family: $secondary-header-font;
+        font-weight: bold;
+        transition: transform 100ms;
+        animation: shake 1s;
+        animation-iteration-count: 3;
+
+        &:hover,
+        &:focus {
+          background-color: $third-color;
+          transform: scale(1.1);
+          animation: none;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 2000px) {
+  .item-desc {
+    font-size: 1.5rem !important;
+    & > * {
+      font-size: 1.5rem !important;
+    }
+  }
+  .article-btns {
+    & > * {
+      font-size: 1.3rem !important;
+    }
+  }
+}
+
+@media only screen and(max-width: 650px) {
+  #prev-display {
+    width: 100% !important;
+  }
+
+  #item-header {
+    font-size: 1.5rem !important;
+  }
+}

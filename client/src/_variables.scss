@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=Miriam+Libre:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Signika&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap");
+
+//global variables
+$car-img-show: true;
+
+//colors
+$primary-color: #0f0e17;
+$secondary-color: #fffffe; //this color is used in sharp middelware as well
+$third-color: #f25f4c;
+$btn-color: #ff8906;
+$paragraph-color: #a7a9be;
+$shadow-color: rgba(0, 0, 0, 0.2);
+$error-text: #641e16;
+$blured-backgd-color: rgba(65, 62, 58, 0.9);
+
+//fonts
+$main-header-font: "Miriam Libre", sans-serif;
+$secondary-header-font: "Signika", sans-serif;
+$regular-text-font: "Noto Sans", sans-serif;
+$placeholder-font: "Noto Sans", sans-serif;
+
+//navbar
+$navbar-height: 60px;
+
+//card
+$card-height: 200px;
+
+//btns
+@mixin btn-style($bg-color: $btn-color, $height_p: 30px, $width_p: 30%) {
+	height: $height_p;
+	width: $width_p;
+	border-radius: 5px;
+	font-weight: bold;
+	background-color: $bg-color;
+	@if ($bg-color == $primary-color) {
+		color: $secondary-color;
+	} @else {
+		color: $primary-color;
+	}
+	border: 1px solid $secondary-color;
+	outline: none;
+	transition: all 500ms;
+
+	&:hover,
+	&:focus {
+		transform: scale(1.1);
+		background-color: $third-color;
+		color: $primary-color;
+	}
+
+	&:active {
+		box-shadow: 10px 10px 20px $shadow-color inset;
+	}
+}
+
+//show and hide info div
+@mixin info-div($bg-color: $blured-backgd-color) {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: $bg-color;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: fadein 500ms;
+	z-index: 20;
+	& > div {
+		background-color: $primary-color;
+		padding: 1%;
+		border: 5px outset $third-color;
+		border-radius: 15px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		animation: borderAnimation 1s;
+		animation-timing-function: ease-in-out;
+		animation-delay: 500ms;
+
+		& > p {
+			font-family: $regular-text-font;
+			color: $secondary-color;
+		}
+
+		button {
+			@include btn-style($secondary-color, 30px, 50%);
+		}
+	}
+}
+
+//slider width
+$article-slider-width: 40%;
+$home-page-slider-width: 90%;
+
+/*    ANIMTAION     */
+//fadein
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+//fadeout
+@keyframes fadeout {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+//slidein animation
+@keyframes slideformRight {
+	0% {
+		width: 20%;
+		border-radius: 0;
+	}
+	100% {
+		width: 95%;
+		border-radius: 100px 0px 0px 100px;
+	}
+}
+
+@keyframes slideformRight_small {
+	0% {
+		width: 20%;
+	}
+	100% {
+		width: 99%;
+	}
+}
+//sake animation
+
+@keyframes shake {
+	0% {
+		transform: translate(-1px, 1px) rotate(-5deg);
+	}
+	10% {
+		transform: translate(-2px, 2px) rotate(5deg);
+	}
+	20% {
+		transform: translate(-1px, 1px) rotate(-5deg);
+	}
+	30% {
+		transform: translate(-2px, 2px) rotate(5deg);
+	}
+	40% {
+		transform: translate(-1px, 1px) rotate(-5deg);
+	}
+	50% {
+		transform: translate(-2px, 2px) rotate(5deg);
+	}
+	60% {
+		transform: translate(-1px, 1px) rotate(-5deg);
+	}
+	70% {
+		transform: translate(-2px, 2px) rotate(5deg);
+	}
+	80% {
+		transform: translate(-1px, 1px) rotate(-5deg);
+	}
+	90% {
+		transform: translate(-2px, 2px) rotate(5deg);
+	}
+	100% {
+		transform: translate(-1px, 1px) rotate(-5deg);
+	}
+}
+
+@keyframes borderAnimation {
+	0% {
+		border-style: outset;
+		transform: translateY(0);
+	}
+	10% {
+		border-style: inset;
+		transform: translateY(-15px);
+	}
+	50% {
+		border-style: outset;
+		transform: translateY(10px);
+	}
+
+	100% {
+		border-style: inset;
+		transform: translateY(0);
+	}
+}

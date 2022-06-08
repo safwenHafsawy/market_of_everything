@@ -1,0 +1,110 @@
+@import "../../variables";
+
+@mixin optShown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-weight: bold;
+  height: 150px;
+  transition: all 1s;
+
+  .options {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 5px;
+    width: 100%;
+    visibility: visible;
+    transition: opacity 0.5s;
+    opacity: 1;
+
+    .input-options {
+      width: 90px;
+      box-sizing: border-box;
+      margin: 5px;
+      text-align: center;
+      border-radius: 5px;
+      border: 1px solid $third-color;
+      background-color: $secondary-color;
+
+      &:focus {
+        outline: 2px solid $third-color;
+        border-color: transparent;
+      }
+    }
+  }
+}
+
+#filter-option-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+
+  .filter-items {
+    cursor: pointer;
+    width: 100%;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 7px 2px;
+    border-bottom: 2px solid $secondary-color;
+    font-size: medium;
+    color: $secondary-color;
+    font-family: $secondary-header-font;
+
+    .icon {
+      font-size: small;
+    }
+
+    &:hover {
+      font-style: italic;
+      font-weight: bold;
+      border-bottom-width: 4px;
+      .icon {
+        font-size: medium;
+      }
+    }
+  }
+
+  .options-hidden {
+    height: 20px;
+    transition: height 1s, transform 1s;
+    .options {
+      height: 0px;
+      width: 0px;
+      opacity: 0;
+    }
+
+    &:focus-within {
+      @include optShown;
+    }
+  }
+  .options-shown {
+    @include optShown;
+  }
+}
+#filter-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  .filter-btn {
+    @include btn-style;
+  }
+}
+
+.invisible-error {
+  display: none;
+}
+
+.visible-error {
+  display: block;
+  text-align: center;
+  color: $error-text;
+  cursor: pointer;
+  animation: fadein 1s infinite;
+}

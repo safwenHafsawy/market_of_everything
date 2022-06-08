@@ -1,0 +1,131 @@
+@import "../../_variables.scss";
+
+#update-page {
+	margin-top: $navbar-height + 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 5px;
+	& > h3 {
+		font-family: $main-header-font;
+		color: $secondary-color;
+	}
+
+	& > * {
+		margin: 1%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		width: 60%;
+
+		@media (max-width: 700px) {
+			width: 95%;
+		}
+
+		& > span {
+			width: 40%;
+			text-align: center;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			font-family: $secondary-header-font;
+
+			& > label {
+				width: 100%;
+				color: $secondary-color;
+				font-family: $secondary-header-font;
+			}
+		}
+
+		& > input:not([type="file"]),
+		select,
+		textarea {
+			width: 70%;
+			border: 2px solid $third-color;
+			border-radius: 10px;
+			text-align: center;
+			background-color: $secondary-color;
+			resize: none;
+			font-family: $regular-text-font;
+			font-size: 0.8rem;
+			transition: all 500ms;
+
+			&:hover,
+			&:active,
+			&:focus {
+				outline: none;
+				border-color: $third-color;
+				transform: scaleX(1.05);
+			}
+		}
+
+		& > div {
+			width: fit-content;
+			background-color: $secondary-color;
+			display: flex;
+
+			& > img {
+				width: 100%;
+				max-height: 200px;
+				max-width: 200px;
+				object-fit: cover;
+				transition: transform 500ms;
+				border: 1px solid $primary-color;
+			}
+
+			&:hover {
+				transform: scale(1.05);
+				box-shadow: 0px 0px 20px 2px $third-color;
+			}
+		}
+	}
+
+	& > button {
+		@include btn-style($btn-color, 25px, 15%);
+		@media (max-width: 700px) {
+			@include btn-style($btn-color, 25px, 80%);
+		}
+	}
+	#error-p {
+		color: $third-color;
+		font-size: 0.7rem;
+		animation: fadein 1s;
+		animation-iteration-count: infinite;
+	}
+}
+
+//show message
+
+#info-div {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: $primary-color;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: fadein 500ms;
+	z-index: 20;
+	& > div {
+		width: 50%;
+		background-color: $secondary-color;
+		padding: 1%;
+		border: 5px outset $third-color;
+		border-radius: 15px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		animation: borderAnimation 1s;
+		animation-timing-function: ease-in-out;
+		animation-delay: 500ms;
+
+		& > p {
+			font-family: $regular-text-font;
+			color: $primary-color;
+		}
+
+		button {
+			@include btn-style($third-color, 30px, 50%);
+		}
+	}
+}

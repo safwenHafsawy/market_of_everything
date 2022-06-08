@@ -1,0 +1,89 @@
+@import "../../variables";
+@import "./sell_mixins.scss";
+
+#sell-page {
+	@include sell_page_main();
+	#sell-form {
+		@include form_styling(60%, 20px);
+
+		//errors
+		.hideErr {
+			display: none;
+		}
+		.showErr {
+			display: inline;
+			color: $error-text;
+			font-family: $regular-text-font;
+			font-size: 0.8rem;
+			animation: fadein 1s;
+			animation-iteration-count: infinite;
+		}
+
+		//inputs
+		.sell-form-item {
+			@include form-items-styling(10px, space-between);
+
+			.text-input-sell {
+				@include input-style(80%);
+			}
+		}
+
+		#select-pics {
+			@include select-pics;
+		}
+	}
+}
+
+@media (min-width: 1600px) {
+	#sell-page {
+		@include sell_page_main;
+		#sell-form {
+			@include form_styling(50%, 50px);
+			.sell-form-item {
+				@include form-items-styling(30px, space-evenly, 1rem);
+				.text-input-sell {
+					@include input-style(70%, 50px);
+				}
+			}
+			#select-pics {
+				@include select-pics(70%);
+			}
+		}
+	}
+}
+
+@media (max-width: 800px) {
+	#sell-page {
+		#sell-form {
+			@include form_styling(80%, 20px);
+			.sell-form-item {
+				.text-input-sell {
+					@include input-style(60%);
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 500px) {
+	#sell-page {
+		@include sell_page_main;
+		#sell-form {
+			@include form_styling(98%, 10px);
+			.sell-form-item {
+				@include form-items-styling(5px, space-around);
+
+				& > label {
+					width: 15%;
+					font-size: 0.5rem;
+				}
+				.text-input-sell {
+					@include input-style(70%);
+				}
+			}
+			#select-pics {
+				@include select-pics(50%);
+			}
+		}
+	}
+}

@@ -1,0 +1,235 @@
+@import "../../variables";
+@import "./home_mixins.scss";
+
+#home-page {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: $secondary-color;
+
+  #welcome-banner {
+    @include container;
+
+    #welcome-home-content {
+      @include maindiv(90%, 100%);
+      #welcome-header {
+        @include main-header(4rem, 7px);
+      }
+
+      .secondary-header {
+        @include secondary-header(1.2rem);
+      }
+
+      #search-home {
+        @include display-box(70%, $third-color);
+
+        #search-home-box {
+          @include search-box(90%, row);
+
+          #search-home-input {
+            @include input_styles(110%, 90%);
+          }
+          #search-home-btn {
+            @include btn-style($primary-color);
+          }
+        }
+
+        #home-link-categ {
+          @include links(1.1rem, $primary-color);
+        }
+      }
+
+      #home-sell {
+      	@include display-box(50%, $secondary-color);
+
+        #home-sell-header{
+          color: $primary-color;
+        }
+
+        #home-sell-link {
+          @include links(1.1rem, $third-color);
+        }
+      }
+    }
+
+    & > * {
+      opacity: 0;
+      animation: fadein 500ms;
+      animation-delay: 1.9s;
+      animation-fill-mode: forwards;
+    }
+  } //end welome banner style
+} //ends home page style
+
+//media querries
+@media (max-width: 950px) {
+  #home-page {
+    #welcome-banner {
+      @include container(forwards);
+      #welcome-home-content {
+        .secondary-header {
+          @include secondary-header(1rem);
+        }
+        #welcome-header {
+          @include main-header(2.5rem, 5px);
+        }
+        #search-home {
+          @include display-box(90%, $secondary-color);
+          #search-home-box {
+            @include search-box(100%, row);
+            #search-home-input {
+              @include input_styles(110%, 85%);
+            }
+          }
+          #home-link-categ {
+            @include links(0.9rem, $third-color);
+          }
+        }
+        #home-sell {
+          @include display-box(70%, $third-color);
+          #home-sell-link {
+            @include links(0.9rem, $secondary-color);
+          }
+        }
+      }
+    } //close welcome-banner
+  } //close home-page
+} //close media qry
+
+@media (max-width: 650px) {
+  #home-page {
+    #welcome-banner {
+      @include container(99%, 10px, slideformRight_small);
+      #welcome-home-content {
+        .secondary-header {
+          @include secondary-header(1rem);
+        }
+        #welcome-header {
+          @include main-header(2rem, 5px);
+        }
+        #search-home {
+          @include display-box(100%, $third-color);
+          #search-home-box {
+            @include search-box(100%, column);
+            #search-home-input {
+              @include input_styles(100%, 85%, 5px);
+            }
+          }
+          #home-link-categ {
+            @include links(0.9rem, $secondary-color);
+          }
+        }
+        #home-sell {
+          @include display-box(90%, $primary-color);
+          #home-sell-link {
+            @include links(0.9rem, $secondary-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 380px), (max-height: 500px) {
+  #home-page {
+    #welcome-banner {
+      #welcome-home-content {
+        .secondary-header {
+          @include secondary-header(0.8rem);
+        }
+        #welcome-header {
+          @include main-header(1.8rem, 5px);
+        }
+        #search-home {
+          #search-home-box {
+            @include search-box(100%, column);
+          }
+          #home-link-categ {
+            @include links(0.6rem, $primary-color);
+          }
+        }
+        #home-sell {
+					background-color: $secondary-color;
+          #home-sell-link {
+            @include links(0.6rem, $third-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1500px), (min-height: 1200px) {
+  #home-page {
+    #welcome-banner {
+      #welcome-home-content {
+        .secondary-hesader {
+          @include secondary-header(2rem);
+        }
+        #welcome-header {
+          @include main-header(5rem, 5px);
+        }
+        #search-home {
+          #search-home-box {
+            @include search-box(90%, row);
+
+            #search-home-input {
+              @include input_styles(120%, 90px);
+            }
+            #search-home-btn {
+              @include btn-style($third-color, 50px);
+              font-size: 1.5rem;
+            }
+          }
+          #home-link-categ {
+            @include links(2rem, $third-color);
+          }
+        }
+        #home-sell {
+          #home-sell-link {
+            @include links(2rem, $secondary-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 3000px) {
+  #home-page {
+    #welcome-banner {
+      #welcome-home-content {
+        .secondary-hesader {
+          @include secondary-header(2rem);
+        }
+        #welcome-header {
+          @include main-header(8rem, 5px);
+        }
+        #search-home {
+          #search-home-box {
+            @include search-box(90%, row);
+
+            #search-home-input {
+              @include input_styles(100%, 150px);
+            }
+            #search-home-btn {
+              @include btn-style($third-color, 50px);
+              font-size: 1.5rem;
+            }
+          }
+          #home-link-categ {
+            @include links(2rem, $third-color);
+          }
+        }
+        #home-sell {
+          #home-sell-link {
+            @include links(2rem, $secondary-color);
+          }
+        }
+      }
+    }
+  }
+}

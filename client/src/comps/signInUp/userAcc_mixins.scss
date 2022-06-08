@@ -1,0 +1,105 @@
+@mixin display-opt($width_p) {
+  margin-top: 10%;
+  width: $width_p;
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin formStyle {
+  width: 100%;
+  background-color: $primary-color;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 5px $secondary-color;
+  padding: 5%;
+  transition: all 500ms;
+  animation: fadein 800ms;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+@mixin form-item-inputs(
+  $flx_dir_p,
+  $input_width,
+  $margin_p: 5px,
+  $fontsize_p: 1rem,
+  $input_height_p: 100%
+) {
+  display: flex;
+  flex-direction: $flx_dir_p;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  font-family: $main-header-font;
+  font-weight: bolder;
+  margin: $margin_p;
+
+  span {
+    width: 30%;
+    text-align: center;
+    font: $fontsize_p $regular-text-font;
+    font-weight: bold;
+  }
+
+  input {
+    width: $input_width;
+    height: $input_height_p;
+    font-size: $fontsize_p;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    color: $primary-color;
+    transition: all 500ms;
+    border-radius: 2px;
+    border: 2px solid $secondary-color;
+    border-radius: 5px;
+
+    &:focus,
+    &:active {
+      outline: none;
+      border-color: $third-color;
+      border-radius: 10px;
+      transform: scale(1.05);
+    }
+  }
+}
+
+@mixin btn-form-style {
+  border-top: 2px solid $secondary-color;
+  padding-top: 10px;
+  margin: 10px 0px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  .form-btn {
+    @include btn-style;
+    transition: all 500ms;
+  }
+}
+
+@mixin alt_part-style($fontSize_p: 1rem) {
+  border-top: 2px solid $secondary-color;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: $secondary-color;
+  color: $primary-color;
+  border-radius: 5px;
+  font: $fontSize_p $main-header-font;
+  .form-btn-alt {
+    background-color: transparent;
+    border: transparent;
+    transition: transform 500ms;
+
+    &:hover,
+    &:focus {
+      transform: scale(2) translateY(5px);
+      outline: none;
+      border-radius: 5px;
+    }
+  }
+}

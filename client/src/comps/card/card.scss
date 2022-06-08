@@ -1,0 +1,31 @@
+@import "../../variables";
+@import "./card_mixin.scss";
+
+.itemCard {
+  @include card_style;
+
+  //card items default style
+  #item-card-header {
+    @include card_header_style;
+  }
+
+  #item-card-img {
+    @include card_img_style(50%, 80%, cover);
+  }
+
+  #item-card-footer {
+    @include card_footer_style;
+  }
+}
+.card {
+  @include card_style;
+
+  //card items default style
+  #card-header {
+    @include card_header_style;
+  }
+
+  #card-img {
+    @include card_img_style(30%, 30%, containt);
+  }
+}

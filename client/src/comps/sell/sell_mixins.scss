@@ -1,0 +1,90 @@
+@mixin sell_page_main {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	animation: fadein 1s;
+	margin-top: calc($navbar_height + 5%);
+}
+
+@mixin form_styling($width, $padding) {
+	width: $width;
+	padding: $padding;
+	box-shadow: 1px 1px 10px 1px $secondary-color;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+
+}
+
+@mixin form-items-styling($margin_p, $justify-content_p, $font-size_p: 0.8rem) {
+	margin: $margin_p;
+	color: $secondary-color;
+	font-weight: lighter;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: $justify-content_p;
+	align-items: center;
+	font-size: $font-size_p;
+
+	&:last-child {
+		border-top: 1px solid $secondary-color;
+		padding-top: 30px;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		#submit-sell-btn,
+		#reset-sell-btn {
+			@include btn-style;
+			margin: 5px;
+		}
+	}
+}
+
+@mixin input-style($width_p, $height_p: 100%) {
+	width: $width_p;
+	height: $height_p;
+	padding: 0;
+	margin: 0;
+	color: $primary-color;
+	transition: all 300ms;
+	border-radius: 2px;
+	border: 2px solid $secondary-color;
+	border-radius: 5px;
+	font-weight: bold;
+	background-color: $secondary-color;
+	resize: none;
+	text-align: center;
+
+	&:focus,
+	&:active {
+		outline: none;
+		border-color: $third-color;
+		border-width: 3px;
+		border-radius: 10px;
+		transform: scale(1.05);
+	}
+}
+
+@mixin select-pics($label_width_p: 80%) {
+	:nth-child(2) {
+		width: 0.1px;
+		height: 0.1px;
+	}
+
+	:last-child {
+		position: relative;
+		width: $label_width_p;
+		text-align: center;
+		cursor: pointer;
+		&:focus,
+		&:hover {
+			color: $third-color;
+		}
+	}
+}

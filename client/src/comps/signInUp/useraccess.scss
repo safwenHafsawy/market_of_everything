@@ -1,0 +1,111 @@
+@import "../../variables";
+@import "./userAcc_mixins.scss";
+
+#useraccess-full {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+  background-color: $primary-color;
+  z-index: 10;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  #display-opt {
+    @include display-opt(50%);
+
+    .account-access-form {
+      @include formStyle;
+
+      .form-item {
+        @include form-item-inputs(row, 70%);
+
+        &:nth-last-child(2) {
+          @include btn-form-style;
+        }
+
+        &:last-child {
+          @include alt_part-style;
+        }
+      }
+    }
+
+    #signin-altr {
+      font-size: 1rem;
+      color: $secondary-color;
+      text-align: center;
+      transition: transform 500ms;
+
+			@media(max-width: 650px){
+				font-size: 0.8rem;
+			}
+      span {
+        cursor: pointer;
+        text-decoration: underline;
+        font-weight: bold;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $third-color;
+          outline: none;
+        }
+      }
+      a {
+        color: $secondary-color;
+        text-decoration: underline;
+        font-weight: bold;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $third-color;
+          outline: none;
+        }
+      }
+    }
+  }
+	.show-error-div{
+		@include info-div; 
+	}
+
+	.hide-error-div{
+		display: none;
+	}
+}
+
+//media qrs
+@media (max-width: 600px) {
+  #useraccess-full {
+    #display-opt {
+      @include display-opt(95%);
+      .account-access-form {
+        .form-item {
+          @include form-item-inputs(column, 100%, 0px);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1600px) {
+  #useraccess-full {
+    #display-opt {
+      @include display-opt(95%);
+      .account-access-form {
+        .form-item {
+          @include form-item-inputs(row, 80%, 0px, 1.5rem, 50px);
+
+          &:last-child {
+            @include alt_part-style(2rem);
+          }
+        }
+      }
+
+      #signin-altr {
+        font-size: 2rem;
+      }
+    }
+  }
+
+}

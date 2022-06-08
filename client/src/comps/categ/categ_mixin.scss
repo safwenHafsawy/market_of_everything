@@ -1,0 +1,15 @@
+@mixin back_nav {
+  background-color: transparent;
+  border: transparent;
+  font-family: $secondary-header-font;
+  font-weight: bold;
+  color: $secondary-color;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: $third-color;
+    text-decoration: underline;
+    outline: none;
+  }
+}
