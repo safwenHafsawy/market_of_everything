@@ -85,13 +85,13 @@
             }
           }
           #home-link-categ {
-            @include links(0.9rem, $third-color);
+            @include links(0.9rem, $primary-color);
           }
         }
         #home-sell {
-          @include display-box(70%, $third-color);
+          @include display-box(70%, $secondary-color);
           #home-sell-link {
-            @include links(0.9rem, $primary-color);
+            @include links(0.9rem, $third-color);
           }
         }
       }

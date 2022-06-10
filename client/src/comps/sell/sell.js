@@ -142,11 +142,11 @@ function Sell(props) {
 							id="select-option-sell"
 							className="text-input-sell"
 							value={category}
-							defaultValue={"--categoire--"}
+							defaultValue={"--category--"}
 							onChange={(e) => handleInput(e)}
 						>
-							<option value="--categoire--" disabled>
-								--choose a categoire--
+							<option value="--category--" disabled>
+								--choose a category-
 							</option>
 							<option value="Cars">Cars</option>
 							<option value="Houses">Houses</option>
