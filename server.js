@@ -1,6 +1,7 @@
 "use strict";
 
 const express = require("express");
+const http = require("http");
 const cors = require("cors");
 const session = require("express-session");
 const MongoSTore = require("connect-mongodb-session")(session);
@@ -70,15 +71,18 @@ app.use(passport.session());
 /**
  * -------------- API ROUTING ----------------
  */
+
 mainAPI(app);
 productApi(app);
 userAPI(app);
-//not found route
 app.use(express.static(path.join(__dirname, "client", "build")));
 app.use("/images", express.static(__dirname + "/public/imgs"));
 app.get("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
+
+setInterval(()=> http.get("https://marketofeveyrthing.herokuapp.com/"), 300000);
+//not found route
 app.use((req, res) => {
 	res.json({ status: 404, message: "NOT FOUND !" });
 });
@@ -86,6 +90,7 @@ app.use((req, res) => {
 /**
  * -------------- SEVRVER ----------------
  */
+
 app.listen(PORT || 3000, () => {
 	console.log(`port is working on port ${PORT}`);
 });
