@@ -1,6 +1,7 @@
 import "./updateArticle.scss";
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Loading from "../loading/loading.js";
 
 const UpdateProduct = () => {
 	const loc = useLocation();
@@ -16,12 +17,14 @@ const UpdateProduct = () => {
 	const [imgError, setImgError] = useState(false);
 	const [info, setInfo] = useState("");
 	const [inputBlankError, setInputBlankError] = useState(false);
+	const [loading, setLoading] = useState(false);
 
 	async function updateProduct() {
 		if (images_u.length + newImages.length > 6) {
 			setImgError(true);
 			return;
 		}
+		setLoading(true);
 		const formData = new FormData();
 
 		formData.append("productTitle", title_u);
@@ -42,20 +45,21 @@ const UpdateProduct = () => {
 		}
 
 		if (imgError === false && inputBlankError === false) {
-			const response = await fetch(
-				`/api/products/${_id}`,
-				{
-					method: "PUT",
-					credentials: "include",
-					body: formData,
-				}
-			);
+			const response = await fetch(`/api/products/${_id}`, {
+				method: "PUT",
+				credentials: "include",
+				body: formData,
+			});
 			const { status, message } = await response.json();
-			if (status === 201) setInfo(message);
-			if (status === 500) setInfo(message);
+			if (status === 201) {
+				setLoading(false);
+				setInfo(message);
+			} else if (status === 500) {
+				setLoading(false);
+				setInfo(message);
+			}
 		}
 	}
-
 	const handleChange = (e) => {
 		switch (e.target.name) {
 			case "title":
@@ -98,6 +102,7 @@ const UpdateProduct = () => {
 	else
 		return (
 			<div id="update-page">
+				{loading ? <Loading message="updating your product" /> : ""}
 				<h3>Update Your Product</h3>
 				<hr />
 				<div>
@@ -216,7 +221,6 @@ const UpdateProduct = () => {
 
 const ShowInfo = (props) => {
 	const navigator = useNavigate();
-	console.log("das");
 	return (
 		<div id="info-div">
 			<div>
@@ -233,4 +237,5 @@ const ShowInfo = (props) => {
 		</div>
 	);
 };
+
 export default UpdateProduct;

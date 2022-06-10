@@ -1,0 +1,41 @@
+@import "../../variables";
+
+#loading-page {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+
+	background-color: $blured-backgd-color;
+	z-index: 30;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: fadein 500ms;
+
+	#loading-display {
+		color: $secondary-color;
+		display: inline-block;
+		& > h1 {
+			border-right: 0.15em solid $third-color;
+			white-space: nowrap;
+			width: 0;
+			max-width: fit-content;
+			overflow: hidden;
+			animation: typing 2.5s steps(25, end) forwards 500ms infinite;
+			font-family: $main-header-font;
+		}
+
+		& > h3 {
+			font-family: $secondary-header-font;
+		}
+	}
+}
+
+@keyframes typing {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
+	}
+}

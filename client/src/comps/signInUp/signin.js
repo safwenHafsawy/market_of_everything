@@ -11,27 +11,31 @@ function Signin(props) {
 	const navigate = useNavigate();
 	const storeDispatch = useDispatch();
 
-	const submitForm = (e) => {
+	const submitForm = async (e) => {
 		e.preventDefault();
+		props.showLoading(true);
 		const credential = { identifier, password_v: password };
 
-		fetch("/api/login", {
+		const response = await fetch("/api/login", {
 			method: "POST",
 			headers: { "content-type": "application/json" },
 			credentials: "include",
 			body: JSON.stringify(credential),
-		}).then((data) => {
-			if (data.status === 401) {
-				props.handleError("Username or password is incorrect, Please try again !");
-			} else {
-				data.json().then((res) => {
-					if (res.status === 200) {
-						storeDispatch(loginAction(res.userID, res.username, true));
-						navigate("/catg");
-					}
-				});
-			}
 		});
+		if (response.status === 401) {
+			props.handleError(
+				"Username or password is incorrect, Please try again !"
+			);
+		} else {
+			const data = await response.json();
+			if (data.status === 200) {
+				storeDispatch(loginAction(data.userID, data.username, true));
+				props.showLoading(false);
+				navigate("/catg");
+			} else {
+				props.showLoading(false);
+			}
+		}
 	};
 
 	const handleInput = (e) => {

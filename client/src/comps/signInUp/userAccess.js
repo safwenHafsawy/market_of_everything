@@ -3,12 +3,23 @@ import { Link } from "react-router-dom";
 import Signin from "./signin";
 import SignUp from "./signup";
 import "./useraccess.scss";
+import Loading from "../loading/loading.js";
 
 function UserAcces() {
 	const [signIn, setSignIn] = useState(true);
 	const [error, setError] = useState("");
+	const [loading, setLoading] = useState(false);
 	return (
 		<div id="useraccess-full">
+			{loading ? (
+				<Loading
+					message={
+						signIn ? "checking your credentials" : "Creating your account"
+					}
+				/>
+			) : (
+				""
+			)}
 			<div className={error.length > 0 ? "show-error-div" : "hide-error-div"}>
 				<div>
 					<p>{error}</p>
@@ -16,7 +27,17 @@ function UserAcces() {
 				</div>
 			</div>
 			<div id="display-opt">
-				<div id="forms">{signIn ? <Signin handleError={setError} /> : <SignUp handleError={setError} toSignIn={setSignIn} />}</div>
+				<div id="forms">
+					{signIn ? (
+						<Signin showLoading={setLoading} handleError={setError} />
+					) : (
+						<SignUp
+							showLoading={setLoading}
+							handleError={setError}
+							toSignIn={setSignIn}
+						/>
+					)}
+				</div>
 				<div id="signin-altr">
 					{signIn ? (
 						<p>

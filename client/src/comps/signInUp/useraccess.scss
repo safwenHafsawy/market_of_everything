@@ -2,13 +2,13 @@
 @import "./userAcc_mixins.scss";
 
 #useraccess-full {
-  position: absolute;
+  position: fixed;
   width: 100%;
   min-height: 100%;
   background-color: $primary-color;
   z-index: 10;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
 
   #display-opt {
@@ -37,7 +37,7 @@
       transition: transform 500ms;
 
 			@media(max-width: 650px){
-				font-size: 0.8rem;
+				font-size: 0.7rem;
 			}
       span {
         cursor: pointer;

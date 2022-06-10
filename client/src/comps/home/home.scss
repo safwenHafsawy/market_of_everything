@@ -77,7 +77,7 @@
           @include main-header(2.5rem, 5px);
         }
         #search-home {
-          @include display-box(90%, $secondary-color);
+          @include display-box(90%, $third-color);
           #search-home-box {
             @include search-box(100%, row);
             #search-home-input {
@@ -91,7 +91,7 @@
         #home-sell {
           @include display-box(70%, $third-color);
           #home-sell-link {
-            @include links(0.9rem, $secondary-color);
+            @include links(0.9rem, $primary-color);
           }
         }
       }
@@ -119,13 +119,13 @@
             }
           }
           #home-link-categ {
-            @include links(0.9rem, $secondary-color);
+            @include links(0.9rem, $primary-color);
           }
         }
         #home-sell {
-          @include display-box(90%, $primary-color);
+          @include display-box(90%, $secondary-color);
           #home-sell-link {
-            @include links(0.9rem, $secondary-color);
+            @include links(0.9rem, $third-color);
           }
         }
       }

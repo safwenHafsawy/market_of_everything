@@ -31,7 +31,7 @@ function SignUp(props) {
 			);
 			return;
 		}
-
+props.showLoading(true);
 		const userCred = { username, email, phone, password };
 
 		for (let field in userCred) {
@@ -55,9 +55,11 @@ function SignUp(props) {
 		if (status === 201) {
 			props.handleError(message);
 			setTimeout(() => {
+				props.showLoading(false);
 				props.toSignIn(true);
 			}, 2000);
 		} else {
+			props.showLoading(false);
 			props.handleError(message);
 		}
 	};

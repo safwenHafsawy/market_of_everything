@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./fullArticle.scss";
 import PicCol from "../picSlide/picCollage";
 import { useSelector } from "react-redux";
+import Loading from "../loading/loading.js";
 
 const FullArticle = () => {
 	const loc = useLocation();
@@ -13,35 +14,38 @@ const FullArticle = () => {
 	const [email, setEmail] = useState("");
 	const [phone, setPhone] = useState("");
 	const [error, setError] = useState("");
+	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
 	const currentUserID = useSelector((state) => state.logInOutRed.userID);
 
 	const contactPublisher = () => {
-		fetch(`/api/userinfo?id=${item.author}`).then(
-			(response) =>
-				response.json().then((data) => {
-					setEmail(data.userInfo.email);
-					setPhone(data.userInfo.phone);
-					setShowPubInfo(true);
-				})
+		fetch(`/api/userinfo?id=${item.author}`).then((response) =>
+			response.json().then((data) => {
+				setEmail(data.userInfo.email);
+				setPhone(data.userInfo.phone);
+				setShowPubInfo(true);
+			})
 		);
 	};
 
 	const deleteProd = () => {
+		setLoading(true);
 		fetch(`/api/products/${item._id}`, {
 			method: "DELETE",
 			credentials: "include",
 		}).then((res) => {
 			res.json().then((data) => {
+				setLoading(false);
 				if (data.status === 201) {
 					setError("Your Product was Deleted successfully !");
-				}
-				else setError("Ooops ! Product could not be deleted ! please try again");
+				} else
+					setError("Oops ! Product could not be deleted ! please try again");
 			});
 		});
 	};
 	return (
 		<div id="full-article-main">
+			{loading ? <Loading message="Deleting your product !" /> : ""}
 			<div className={error.length > 0 ? "show-error-div" : "hide-error-div"}>
 				<div>
 					<p>{error}</p>
