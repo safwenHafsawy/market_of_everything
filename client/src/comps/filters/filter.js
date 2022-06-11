@@ -61,7 +61,6 @@ function Filter(props) {
     setDate(["", ""]);
     setPrice([0, Number.MAX_SAFE_INTEGER]);
     setRegion("");
-    sendFilters();
   };
 
   return (
@@ -78,7 +77,10 @@ function Filter(props) {
         <button id="send-btn" className="filter-btn" onClick={sendFilters}>
           Filter
         </button>
-        <button id="reset-btn" className="filter-btn" onClick={props.clearFilters}>
+        <button id="reset-btn" className="filter-btn" onClick={ ()=> {
+		resetFilters();
+		props.clearFilters();
+	}>
           Clear
         </button>
       </div>
