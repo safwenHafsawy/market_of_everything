@@ -47,7 +47,7 @@ export default function Category() {
         res
           .json()
           .then((data) => {
-						setAllProducts([...data.products])
+	    setAllProducts([...data.products])
             setFiltredProducts([...data.products]);
           })
           .catch((e) => console.log({ error2: e }));
@@ -184,6 +184,7 @@ export default function Category() {
 
             <SortBy sortBy={handleSortingMemo} />
           </div>
+	  {filtredProducts.length === 0 ? <h1>No Products here yet !</h1> : ""}
           <ul id="list-items">
             {filtredProducts.map((item, index) => {
               const date = new Date(item.pubDate).toLocaleString("en-US", {
