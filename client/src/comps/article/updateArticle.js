@@ -99,10 +99,9 @@ const UpdateProduct = () => {
 	};
 
 	if (info.length > 0) return <ShowInfo info={info} changeInfo={setInfo} />;
+	else if (loading) return <Loading message="updating your product" /> ;
 	else
 		return (
-			<>
-			{loading ? <Loading message="updating your product" /> : ""}
 			<div id="update-page">
 				<h3>Update Your Product</h3>
 				<hr />
@@ -217,7 +216,6 @@ const UpdateProduct = () => {
 				<hr />
 				<button onClick={updateProduct}> Update Product </button>
 			</div>
-			</>
 		);
 };
 
