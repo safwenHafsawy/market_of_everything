@@ -40,6 +40,11 @@
         @include back_nav;
       }
     }
+      & > h1 {
+	color: $secondary-color;
+	font-family: $main-header-font;
+	text-align: center;
+      }
 
     #list-items {
       display: flex;
