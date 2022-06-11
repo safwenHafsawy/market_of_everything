@@ -42,7 +42,10 @@
 			align-items: center;
 			border-radius: 20px;
 			box-shadow: 1px 1px 10px 10px $third-color;
-
+			
+			@media (max-width: 600px){
+			  width: 95%;
+			}
 			& > div {
 				width: 100%;
 				padding: 3px 0px 15px;
