@@ -80,6 +80,7 @@ function Filter(props) {
         <button id="reset-btn" className="filter-btn" onClick={ ()=> {
 		resetFilters();
 		props.clearFilters();
+	}
 	}>
           Clear
         </button>
