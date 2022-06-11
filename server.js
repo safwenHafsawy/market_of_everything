@@ -81,7 +81,7 @@ app.get("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
-setInterval(()=> http.get("https://marketofeveyrthing.herokuapp.com/"), 300000);
+setInterval(()=> http.get("http://marketofeveyrthing.herokuapp.com/"), 300000);
 //not found route
 app.use((req, res) => {
 	res.json({ status: 404, message: "NOT FOUND !" });
