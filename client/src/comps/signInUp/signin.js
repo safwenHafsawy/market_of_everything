@@ -23,6 +23,7 @@ function Signin(props) {
 			body: JSON.stringify(credential),
 		});
 		if (response.status === 401) {
+			props.showLoading(false);
 			props.handleError(
 				"Username or password is incorrect, Please try again !"
 			);
